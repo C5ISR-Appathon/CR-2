@@ -61,10 +61,17 @@ public class Splash extends FragmentActivity {
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+		
+		/**
+		 * @param fm
+		 */
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
+		 */
 		@Override
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
@@ -77,21 +84,27 @@ public class Splash extends FragmentActivity {
 			return fragment;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.PagerAdapter#getCount()
+		 */
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
 			return 3;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.PagerAdapter#getPageTitle(int)
+		 */
 		@Override
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
 			case 0:
-				return getString(R.string.title_section1).toUpperCase();
+				return getString(R.string.title_loading).toUpperCase();
 			case 1:
-				return getString(R.string.title_section2).toUpperCase();
+				return getString(R.string.title_soldier).toUpperCase();
 			case 2:
-				return getString(R.string.title_section3).toUpperCase();
+				return getString(R.string.title_supporter).toUpperCase();
 			}
 			return null;
 		}
@@ -114,12 +127,31 @@ public class Splash extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
+			
+			
 			// Create a new TextView and set its text to the fragment's section
 			// number argument value.
 			TextView textView = new TextView(getActivity());
 			textView.setGravity(Gravity.CENTER);
 			textView.setText(Integer.toString(getArguments().getInt(
 					ARG_SECTION_NUMBER)));
+			
+			
+//			int position = getArguments().getInt(
+//					ARG_SECTION_NUMBER);
+//			
+//			switch (position) {
+//			case 0:
+//				
+//				return loading_view;
+//			case 1:
+//				
+//				return soldier_view;
+//			case 2:
+//				
+//				return supporter_view;
+//			}
+			
 			return textView;
 		}
 	}
