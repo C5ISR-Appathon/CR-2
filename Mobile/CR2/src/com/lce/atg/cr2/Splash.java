@@ -1,7 +1,7 @@
 package com.lce.atg.cr2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,12 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class Splash extends FragmentActivity {
 
@@ -32,12 +30,18 @@ public class Splash extends FragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	private static final Map<String, String> urlMap;
+	static {
+		urlMap = new HashMap<String, String>();
+		urlMap.put("categoryList", "http://127.0.0.1");
+		urlMap.put("ItemList", "http://127.0.0.1");
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		//getAvailableCategories();
-		
+
+		String categoryResponse = getJSONResponse(urlMap.get("categoryList"));
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
@@ -59,23 +63,20 @@ public class Splash extends FragmentActivity {
 		return true;
 	}
 
-	private List<String> getAvailableCategories() {
-		List<String> availableCategories = new ArrayList<String>() ;
-		
-		String uri = "http://127.0.0.1";
-		new RequestTask().doInBackground(uri);
-		
-		
-		return availableCategories ;
+	private String getJSONResponse(String requestURL) {
+		String jsonResponse = new String();
+
+		new RequestTask().execute(requestURL);
+
+		return jsonResponse;
 	}
-	
+
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-		
 		/**
 		 * @param fm
 		 */
@@ -83,7 +84,9 @@ public class Splash extends FragmentActivity {
 			super(fm);
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
 		 */
 		@Override
@@ -98,7 +101,9 @@ public class Splash extends FragmentActivity {
 			return fragment;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.view.PagerAdapter#getCount()
 		 */
 		@Override
@@ -107,7 +112,9 @@ public class Splash extends FragmentActivity {
 			return 3;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.view.PagerAdapter#getPageTitle(int)
 		 */
 		@Override
@@ -141,33 +148,36 @@ public class Splash extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			
-//			// Create a new TextView and set its text to the fragment's section
-//			// number argument value.
-//			TextView textView = new TextView(getActivity());
-//			textView.setGravity(Gravity.CENTER);
-//			textView.setText(Integer.toString(getArguments().getInt(
-//					ARG_SECTION_NUMBER)));
-			
-			int position = getArguments().getInt(
-					ARG_SECTION_NUMBER);
-			
+
+			// // Create a new TextView and set its text to the fragment's
+			// section
+			// // number argument value.
+			// TextView textView = new TextView(getActivity());
+			// textView.setGravity(Gravity.CENTER);
+			// textView.setText(Integer.toString(getArguments().getInt(
+			// ARG_SECTION_NUMBER)));
+
+			int position = getArguments().getInt(ARG_SECTION_NUMBER);
+
 			View pageView = null;
-			
+
 			switch (position) {
 			case 1:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.loading_layout, container, false);
+					pageView = inflater.inflate(R.layout.loading_layout,
+							container, false);
 				}
 				return pageView;
 			case 2:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.soldier_layout, container, false);
+					pageView = inflater.inflate(R.layout.soldier_layout,
+							container, false);
 				}
 				return pageView;
 			case 3:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.supporter_layout, container, false);
+					pageView = inflater.inflate(R.layout.supporter_layout,
+							container, false);
 				}
 				return pageView;
 			default:
