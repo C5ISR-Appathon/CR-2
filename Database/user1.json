@@ -1,30 +1,24 @@
 {
-   "_id": "4f3fc041b7a837ada35f3bd8a700005c",
-   "_rev": "2-a0e22cf826113ffe6755752247fae9eb",
+   "_id": "908ff42187c86ac400daff27f20363c5",
+   "_rev": "2-d3c70dba3debb1817488c5821d0c04a2",
    "firstName": "Jack",
    "lastName": "Daniels",
    "email": "jack.daniels@hotmail.com",
-   "objects": [
-       {
-           "Coffee": {
-               "Category": "Food",
-               "Want": 5,
-               "Received": 2
-           }
+   "objects": {
+       "Coffee": {
+           "Category": "Food",
+           "Want": 5,
+           "Received": 2
        },
-       {
-           "Beef Jerky": {
-               "Category": "Food",
-               "Want": 5,
-               "Received": 0
-           }
+       "Beef Jerky": {
+           "Category": "Food",
+           "Want": 5,
+           "Received": 0
        },
-       {
-           "Tuna": {
-               "Category": "Food",
-               "Want": 20,
-               "Received": 0
-           }
+       "Tuna": {
+           "Category": "Food",
+           "Want": 20,
+           "Received": 0
        }
-   ]
+   }
 }
