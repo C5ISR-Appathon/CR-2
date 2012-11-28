@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/american-flag" >
+
+    <TextView
+        android:id="@+id/titleSoldierSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#99000000"
+        android:text="Soldier Sign-up"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/firstNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/titleSoldierSignup"
+        android:layout_marginTop="17dp"
+        android:background="#99000000"
+        android:text="First Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lastNameLabel"
+        android:layout_marginTop="36dp"
+        android:background="#99000000"
+        android:text="E-Mail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/militaryBranchLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rankLabel"
+        android:layout_alignBottom="@+id/rankLabel"
+        android:layout_alignParentLeft="true"
+        android:background="#99000000"
+        android:text="Military Branch"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/noOfTroops"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/militaryBranchLabel"
+        android:layout_marginTop="37dp"
+        android:background="#99000000"
+        android:text="No. Of Troops"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/lastNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/firstNameLabel"
+        android:layout_alignBottom="@+id/firstNameLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/militaryBranchLabel"
+        android:background="#99000000"
+        android:text="Last Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/birthdateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/emailLabel"
+        android:layout_alignBottom="@+id/emailLabel"
+        android:layout_alignLeft="@+id/lastNameLabel"
+        android:background="#99000000"
+        android:text="Birthdate"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/rankLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/birthdateLabel"
+        android:layout_below="@+id/birthdateLabel"
+        android:layout_marginTop="38dp"
+        android:background="#99000000"
+        android:text="Rank"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/deployAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/noOfTroops"
+        android:layout_marginTop="32dp"
+        android:background="#99000000"
+        android:text="Deployed Mailing Address"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>
