@@ -1,29 +1,24 @@
 {
-   "firstName": "Alvin",
-   "lastName": "York",
-   "email": "alvin.york@gmail.com",
-   "objects": [
-       {
-           "XBox": {
-               "Category": "Entertainment",
-               "Want": 1,
-               "Received": 0 
-           }
+   "_id": "908ff42187c86ac400daff27f2037ed4",
+   "_rev": "1-08a5efad294bc9ff57257aa3924c16b6",
+   "firstName": "Diane",
+   "lastName": "Daniels",
+   "email": "diane.daniels@hotmail.com",
+   "objects": {
+       "Coffee": {
+           "Category": "Food",
+           "Want": 15,
+           "Received": 2
        },
-       {
-           "Nerf Gun": {
-               "Category": "Entertainment",
-               "Want": 1,
-               "Received": 0
-           }
+       "Beef Jerky": {
+           "Category": "Food",
+           "Want": 25,
+           "Received": 0
        },
-       {
-           "Socks": {
-               "Category": "Clothes",
-               "Want": 5,
-               "Received": 2
-	       "Notes": "Size 10 Black" 
-           }
+       "Tuna": {
+           "Category": "Food",
+           "Want": 230,
+           "Received": 0
        }
-   ]
+   }
 }

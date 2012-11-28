@@ -1,9 +1,7 @@
 {
-   "_id": "908ff42187c86ac400daff27f20363c5",
-   "_rev": "2-d3c70dba3debb1817488c5821d0c04a2",
-   "firstName": "Jack",
-   "lastName": "Daniels",
-   "email": "jack.daniels@hotmail.com",
+   "firstName": "Pat",
+   "lastName": "Tillman",
+   "email": "pattillman@hotmail.com",
    "objects": {
        "Coffee": {
            "Category": "Food",
@@ -15,8 +13,9 @@
            "Want": 5,
            "Received": 0
        },
-       "Tuna": {
-           "Category": "Food",
+       "TShirts": {
+           "Category": "Other",
+           "Notes": "XL",
            "Want": 20,
            "Received": 0
        }

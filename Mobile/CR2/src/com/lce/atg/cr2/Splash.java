@@ -142,31 +142,37 @@ public class Splash extends FragmentActivity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			
+//			// Create a new TextView and set its text to the fragment's section
+//			// number argument value.
+//			TextView textView = new TextView(getActivity());
+//			textView.setGravity(Gravity.CENTER);
+//			textView.setText(Integer.toString(getArguments().getInt(
+//					ARG_SECTION_NUMBER)));
 			
-			// Create a new TextView and set its text to the fragment's section
-			// number argument value.
-			TextView textView = new TextView(getActivity());
-			textView.setGravity(Gravity.CENTER);
-			textView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
+			int position = getArguments().getInt(
+					ARG_SECTION_NUMBER);
 			
+			View pageView = null;
 			
-//			int position = getArguments().getInt(
-//					ARG_SECTION_NUMBER);
-//			
-//			switch (position) {
-//			case 0:
-//				
-//				return loading_view;
-//			case 1:
-//				
-//				return soldier_view;
-//			case 2:
-//				
-//				return supporter_view;
-//			}
-			
-			return textView;
+			switch (position) {
+			case 1:
+				if (pageView == null) {
+					pageView = inflater.inflate(R.layout.loading_layout, container, false);
+				}
+				return pageView;
+			case 2:
+				if (pageView == null) {
+					pageView = inflater.inflate(R.layout.soldier_layout, container, false);
+				}
+				return pageView;
+			case 3:
+				if (pageView == null) {
+					pageView = inflater.inflate(R.layout.supporter_layout, container, false);
+				}
+				return pageView;
+			default:
+				return null;
+			}
 		}
 	}
 
