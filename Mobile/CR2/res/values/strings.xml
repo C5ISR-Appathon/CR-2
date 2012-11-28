@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CR2</string>
+    <string name="app_name">Soldier Buddy</string>
     <string name="title_supporter">Supporter</string>
     <string name="title_soldier">Soldier</string>
     <string name="title_loading">Soldier Buddy</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
 
 </resources>
