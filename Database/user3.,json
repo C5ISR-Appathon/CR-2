@@ -1,0 +1,29 @@
+{
+   "firstName": "Pat",
+   "lastName": "Tillman",
+   "email": "pattillman@hotmail.com",
+   "objects": [
+       {
+           "Coffee": {
+               "Category": "Food",
+               "Want": 5,
+               "Received": 2
+           }
+       },
+       {
+           "Beef Jerky": {
+               "Category": "Food",
+               "Want": 5,
+               "Received": 0
+           }
+       },
+       {
+           "TShirts": {
+               "Category": "Other",
+               "Notes": "XL",
+               "Want": 20,
+               "Received": 0
+           }
+       }
+   ]
+}

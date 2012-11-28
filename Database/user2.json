@@ -1,0 +1,29 @@
+{
+   "firstName": "Alvin",
+   "lastName": "York",
+   "email": "alvin.york@gmail.com",
+   "objects": [
+       {
+           "XBox": {
+               "Category": "Entertainment",
+               "Want": 1,
+               "Received": 0 
+           }
+       },
+       {
+           "Nerf Gun": {
+               "Category": "Entertainment",
+               "Want": 1,
+               "Received": 0
+           }
+       },
+       {
+           "Socks": {
+               "Category": "Clothes",
+               "Want": 5,
+               "Received": 2
+	       "Notes": "Size 10 Black" 
+           }
+       }
+   ]
+}
