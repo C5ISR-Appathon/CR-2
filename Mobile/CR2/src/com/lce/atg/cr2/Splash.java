@@ -1,16 +1,17 @@
 package com.lce.atg.cr2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -34,6 +35,9 @@ public class Splash extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		//getAvailableCategories();
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
@@ -55,6 +59,16 @@ public class Splash extends FragmentActivity {
 		return true;
 	}
 
+	private List<String> getAvailableCategories() {
+		List<String> availableCategories = new ArrayList<String>() ;
+		
+		String uri = "http://127.0.0.1";
+		new RequestTask().doInBackground(uri);
+		
+		
+		return availableCategories ;
+	}
+	
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
