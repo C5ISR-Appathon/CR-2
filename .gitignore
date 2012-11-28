@@ -1,5 +1,5 @@
 *.class
-**/gen
 **/build
 **/deploy
-**/bin
+Mobile/CR2/bin
+Mobile/CR2/gen
