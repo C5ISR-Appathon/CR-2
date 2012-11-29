@@ -196,39 +196,39 @@ public class Splash extends FragmentActivity {
 			case 3:
 				if (pageView == null) {
 					
-					// pageView = inflater.inflate(R.layout.supporter_layout,
-					// container, false);
+					 pageView = inflater.inflate(R.layout.supporter_layout,
+					 container, false);
 
-					/*
-					 * ExpandableListView
-					 */
-					mExpandableList = (ExpandableListView) getActivity().findViewById(R.id.expandable_list);
-
-					// Create ArrayLists
-					ArrayList<ParentItem> arrayParents = new ArrayList<ParentItem>();
-					ArrayList<String> arrayChildren = new ArrayList<String>();
-
-					// Set the parents and the children
-					for (int i = 0; i < 10; i++) {
-						// For each "i" create a new Parent object to set the
-						// title and the
-						// children
-						ParentItem parent = new ParentItem();
-						parent.setTitle("Parent " + i);
-						arrayChildren.add("Child " + i);
-						parent.setArrayChildren(arrayChildren);
-
-						// Add the Parent object. Use the arrayParents at the
-						// setAdapter
-						arrayParents.add(parent);
-					}
-
-					// sets the adapter that provides data to the list.
-					mExpandableList.setAdapter(new CustomExpandableListAdapter(
-							getActivity().getBaseContext(), arrayParents));
-
-					pageView = inflater.inflate(R.layout.supporter_layout,
-							container, false);
+//					/*
+//					 * ExpandableListView
+//					 */
+//					mExpandableList = (ExpandableListView) getActivity().findViewById(R.id.expandable_list);
+//
+//					// Create ArrayLists
+//					ArrayList<ParentItem> arrayParents = new ArrayList<ParentItem>();
+//					ArrayList<String> arrayChildren = new ArrayList<String>();
+//
+//					// Set the parents and the children
+//					for (int i = 0; i < 10; i++) {
+//						// For each "i" create a new Parent object to set the
+//						// title and the
+//						// children
+//						ParentItem parent = new ParentItem();
+//						parent.setTitle("Parent " + i);
+//						arrayChildren.add("Child " + i);
+//						parent.setArrayChildren(arrayChildren);
+//
+//						// Add the Parent object. Use the arrayParents at the
+//						// setAdapter
+//						arrayParents.add(parent);
+//					}
+//
+//					// sets the adapter that provides data to the list.
+//					mExpandableList.setAdapter(new CustomExpandableListAdapter(
+//							getActivity().getBaseContext(), arrayParents));
+//
+//					pageView = inflater.inflate(R.layout.supporter_layout,
+//							container, false);
 
 				}
 				return pageView;
