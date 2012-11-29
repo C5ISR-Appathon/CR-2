@@ -1,19 +1,18 @@
 package com.lce.atg.cr2;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ExpandableListView;
 
 public class Splash extends FragmentActivity {
 
@@ -32,6 +31,8 @@ public class Splash extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
+	static ExpandableListView mExpandableList;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +42,8 @@ public class Splash extends FragmentActivity {
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
+
+		//mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list);
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -61,7 +64,6 @@ public class Splash extends FragmentActivity {
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-		
 		/**
 		 * @param fm
 		 */
@@ -69,7 +71,9 @@ public class Splash extends FragmentActivity {
 			super(fm);
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.app.FragmentPagerAdapter#getItem(int)
 		 */
 		@Override
@@ -84,7 +88,9 @@ public class Splash extends FragmentActivity {
 			return fragment;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.view.PagerAdapter#getCount()
 		 */
 		@Override
@@ -93,7 +99,9 @@ public class Splash extends FragmentActivity {
 			return 3;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see android.support.v4.view.PagerAdapter#getPageTitle(int)
 		 */
 		@Override
@@ -127,33 +135,68 @@ public class Splash extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			
-//			// Create a new TextView and set its text to the fragment's section
-//			// number argument value.
-//			TextView textView = new TextView(getActivity());
-//			textView.setGravity(Gravity.CENTER);
-//			textView.setText(Integer.toString(getArguments().getInt(
-//					ARG_SECTION_NUMBER)));
-			
-			int position = getArguments().getInt(
-					ARG_SECTION_NUMBER);
-			
+
+			// // Create a new TextView and set its text to the fragment's
+			// section
+			// // number argument value.
+			// TextView textView = new TextView(getActivity());
+			// textView.setGravity(Gravity.CENTER);
+			// textView.setText(Integer.toString(getArguments().getInt(
+			// ARG_SECTION_NUMBER)));
+
+			int position = getArguments().getInt(ARG_SECTION_NUMBER);
+
 			View pageView = null;
-			
+
 			switch (position) {
 			case 1:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.loading_layout, container, false);
+					pageView = inflater.inflate(R.layout.loading_layout,
+							container, false);
 				}
 				return pageView;
 			case 2:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.soldier_layout, container, false);
+					pageView = inflater.inflate(R.layout.soldier_layout,
+							container, false);
 				}
 				return pageView;
 			case 3:
 				if (pageView == null) {
-					pageView = inflater.inflate(R.layout.supporter_layout, container, false);
+					// pageView = inflater.inflate(R.layout.supporter_layout,
+					// container, false);
+
+					/*
+					 * ExpandableListView
+					 */
+					mExpandableList = (ExpandableListView) getActivity().findViewById(R.id.expandable_list);
+
+					// Create ArrayLists
+					ArrayList<ParentItem> arrayParents = new ArrayList<ParentItem>();
+					ArrayList<String> arrayChildren = new ArrayList<String>();
+
+					// Set the parents and the children
+					for (int i = 0; i < 10; i++) {
+						// For each "i" create a new Parent object to set the
+						// title and the
+						// children
+						ParentItem parent = new ParentItem();
+						parent.setTitle("Parent " + i);
+						arrayChildren.add("Child " + i);
+						parent.setArrayChildren(arrayChildren);
+
+						// Add the Parent object. Use the arrayParents at the
+						// setAdapter
+						arrayParents.add(parent);
+					}
+
+					// sets the adapter that provides data to the list.
+					mExpandableList.setAdapter(new CustomExpandableListAdapter(
+							getActivity().getBaseContext(), arrayParents));
+
+					pageView = inflater.inflate(R.layout.supporter_layout,
+							container, false);
+
 				}
 				return pageView;
 			default:
