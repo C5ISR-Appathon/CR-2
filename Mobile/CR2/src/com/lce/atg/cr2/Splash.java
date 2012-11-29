@@ -3,7 +3,11 @@ package com.lce.atg.cr2;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -40,12 +44,24 @@ public class Splash extends FragmentActivity {
 		urlMap.put("wantedList", baseUrl+"/_design/views/_view/Wanted?group_level=100");
 		urlMap.put("soldiersList", baseUrl+"/_design/views/_view/Soldiers?group_level=100");
 	}
+	
+	private static final Handler handler = new Handler()
+	{
+	    public void handleMessage(Message msg) 
+	    {
+	        final String result = (String) msg.getData().get("SOLDIER.BUDDY.RESPONSE");
+	        
+	        //TODO: Add logic to update the screen here.
+	        System.out.println("Returned" + result);
+	        
+	    };
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		String categoryResponse = getJSONResponse(urlMap.get("categoryList"));
-
+		new RequestTask(handler).execute(urlMap.get("categoryList"));
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
@@ -67,13 +83,6 @@ public class Splash extends FragmentActivity {
 		return true;
 	}
 
-	private String getJSONResponse(String requestURL) {
-		String jsonResponse = new String();
-
-		new RequestTask(this).execute(requestURL);
-
-		return jsonResponse;
-	}
 
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
