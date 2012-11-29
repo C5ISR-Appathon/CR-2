@@ -1,5 +1,6 @@
 package com.lce.atg.cr2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 
 public class Splash extends FragmentActivity {
 
@@ -57,6 +59,8 @@ public class Splash extends FragmentActivity {
 	    };
 	};
 
+	static ExpandableListView mExpandableList;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,6 +73,8 @@ public class Splash extends FragmentActivity {
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
+
+		//mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list);
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -189,8 +195,41 @@ public class Splash extends FragmentActivity {
 				return pageView;
 			case 3:
 				if (pageView == null) {
+					
+					// pageView = inflater.inflate(R.layout.supporter_layout,
+					// container, false);
+
+					/*
+					 * ExpandableListView
+					 */
+					mExpandableList = (ExpandableListView) getActivity().findViewById(R.id.expandable_list);
+
+					// Create ArrayLists
+					ArrayList<ParentItem> arrayParents = new ArrayList<ParentItem>();
+					ArrayList<String> arrayChildren = new ArrayList<String>();
+
+					// Set the parents and the children
+					for (int i = 0; i < 10; i++) {
+						// For each "i" create a new Parent object to set the
+						// title and the
+						// children
+						ParentItem parent = new ParentItem();
+						parent.setTitle("Parent " + i);
+						arrayChildren.add("Child " + i);
+						parent.setArrayChildren(arrayChildren);
+
+						// Add the Parent object. Use the arrayParents at the
+						// setAdapter
+						arrayParents.add(parent);
+					}
+
+					// sets the adapter that provides data to the list.
+					mExpandableList.setAdapter(new CustomExpandableListAdapter(
+							getActivity().getBaseContext(), arrayParents));
+
 					pageView = inflater.inflate(R.layout.supporter_layout,
 							container, false);
+
 				}
 				return pageView;
 			default:
