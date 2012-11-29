@@ -30,11 +30,15 @@ public class Splash extends FragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	private static final String baseUrl = "https://cgunn.iriscouch.com/soldier_buddy";
 	private static final Map<String, String> urlMap;
 	static {
 		urlMap = new HashMap<String, String>();
-		urlMap.put("categoryList", "http://127.0.0.1");
-		urlMap.put("ItemList", "http://127.0.0.1");
+		urlMap.put("categoryList", baseUrl+"/_design/views/_view/Categories?group_level=100");
+		urlMap.put("neededList", baseUrl+"/_design/views/_view/Needed?group_level=100");
+		urlMap.put("receivedList", baseUrl+"/_design/views/_view/Received?group_level=100");
+		urlMap.put("wantedList", baseUrl+"/_design/views/_view/Wanted?group_level=100");
+		urlMap.put("soldiersList", baseUrl+"/_design/views/_view/Soldiers?group_level=100");
 	}
 
 	@Override
@@ -66,7 +70,7 @@ public class Splash extends FragmentActivity {
 	private String getJSONResponse(String requestURL) {
 		String jsonResponse = new String();
 
-		new RequestTask().execute(requestURL);
+		new RequestTask(this).execute(requestURL);
 
 		return jsonResponse;
 	}

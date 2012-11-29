@@ -11,11 +11,15 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.NetworkOnMainThreadException;
 
 public class RequestTask extends AsyncTask<String, String, String> {
-	
+	private Activity activity;
+	public RequestTask(Activity activity){
+		this.activity = activity;
+	}
 	@Override
     protected String doInBackground(String... uri) {
         HttpClient httpclient = new DefaultHttpClient();
@@ -46,7 +50,8 @@ public class RequestTask extends AsyncTask<String, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         
-        
+        System.out.println(result);
+        activity.
         //Do anything with response..
     }
 	
