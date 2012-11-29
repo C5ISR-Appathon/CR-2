@@ -1,0 +1,38 @@
+{
+   "_id": "_design/views",
+   "_rev": "8-54532be04a444b68fe6d1294bc1dece3",
+   "language": "javascript",
+   "views": {
+       "Wanted": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Want\"]);\n    }\n  }\n}",
+           "reduce": "_sum"
+       },
+       "Received": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Received\"]);\n    }\n  }\n}",
+           "reduce": "_sum"
+       },
+       "Needed": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Want\"]-doc.objects[obs][\"Received\"]);\n    }\n  }\n}",
+           "reduce": "_sum"
+       },
+       "Categories": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"],1);\n    }\n  }\n}",
+           "reduce": "_sum"
+       },
+       "NeededStats": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Want\"]-doc.objects[obs][\"Received\"]);\n    }\n  }\n}",
+           "reduce": "_stats"
+       },
+       "WantedStats": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Want\"]);\n    }\n  }\n}",
+           "reduce": "_stats"
+       },
+       "ReceivedStats": {
+           "map": "function(doc) {\n  if(doc.objects){\n    for(obs in doc.objects){\n      emit(doc.objects[obs][\"Category\"] + \": \" +obs, doc.objects[obs][\"Received\"]);\n    }\n  }\n}",
+           "reduce": "_stats"
+       },
+       "Soldiers": {
+           "map": "function(doc) {\n emit(doc.lastName + \", \" + doc.firstName,doc._id);\n}"
+       }
+   }
+}
