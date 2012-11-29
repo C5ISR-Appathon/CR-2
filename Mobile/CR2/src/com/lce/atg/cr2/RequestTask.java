@@ -10,6 +10,8 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,6 +58,21 @@ public class RequestTask extends AsyncTask<String, String, String> {
 
 		// Send JSON response to message handler
 		Message message = handler.obtainMessage();
+		try{
+		JSONObject object = new JSONObject(result);
+		System.out.println("JSONObject="+object);
+		JSONArray rows = object.getJSONArray("rows");
+		System.out.println("rows="+rows);
+		for(int i = 0; i < rows.length(); i++){
+			System.out.println("rows.getString("+i+")="+rows.getString(i));
+			JSONObject obj = rows.getJSONObject(i);
+			System.out.println("key="+obj.getString("key"));
+			System.out.println("value="+obj.getString("value"));
+			
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		Bundle bundle = new Bundle();
 		bundle.putString("SOLDIER.BUDDY.RESPONSE", result);
 		message.setData(bundle);
