@@ -1,6 +1,8 @@
 package com.lce.atg.cr2;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,11 +32,24 @@ public class Splash extends FragmentActivity {
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	private static final String baseUrl = "https://cgunn.iriscouch.com/soldier_buddy";
+	private static final Map<String, String> urlMap;
+	static {
+		urlMap = new HashMap<String, String>();
+		urlMap.put("categoryList", baseUrl+"/_design/views/_view/Categories?group_level=100");
+		urlMap.put("neededList", baseUrl+"/_design/views/_view/Needed?group_level=100");
+		urlMap.put("receivedList", baseUrl+"/_design/views/_view/Received?group_level=100");
+		urlMap.put("wantedList", baseUrl+"/_design/views/_view/Wanted?group_level=100");
+		urlMap.put("soldiersList", baseUrl+"/_design/views/_view/Soldiers?group_level=100");
+	}
 
 	static ExpandableListView mExpandableList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
+		String categoryResponse = getJSONResponse(urlMap.get("categoryList"));
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 
@@ -56,6 +71,14 @@ public class Splash extends FragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_splash, menu);
 		return true;
+	}
+
+	private String getJSONResponse(String requestURL) {
+		String jsonResponse = new String();
+
+		new RequestTask(this).execute(requestURL);
+
+		return jsonResponse;
 	}
 
 	/**
@@ -163,6 +186,7 @@ public class Splash extends FragmentActivity {
 				return pageView;
 			case 3:
 				if (pageView == null) {
+					
 					// pageView = inflater.inflate(R.layout.supporter_layout,
 					// container, false);
 
